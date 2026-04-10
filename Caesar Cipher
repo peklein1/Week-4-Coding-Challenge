@@ -1,0 +1,25 @@
+def caesar_cipher(text, shift):
+    result = ""
+
+    for char in text:
+        # Uppercase letters
+        if 'A' <= char <= 'Z':
+            offset = ord('A')
+            new_char = chr((ord(char) - offset + shift) % 26 + offset)
+            result += new_char
+
+        # Lowercase letters
+        elif 'a' <= char <= 'z':
+            offset = ord('a')
+            new_char = chr((ord(char) - offset + shift) % 26 + offset)
+            result += new_char
+
+        # Non-letters stay the same
+        else:
+            result += char
+
+    return result
+
+print(caesar_cipher("abc", 3))          # "def"
+print(caesar_cipher("xyz", 2))          # "zab"
+print(caesar_cipher("Hello, World!", 5)) # "Mjqqt, Btwqi!"
